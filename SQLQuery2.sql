@@ -18,7 +18,7 @@ go
 
 insert into Empleado(NombreCompleto, Correo,Sueldo,FechaContrato)
 Values
-('Maria Mendez','maria@gmail.com',4500,'2024-01-12')
+('Jose Armando','maria@gmail.com',4500,'2024-01-12')
 
 go
 
@@ -44,7 +44,7 @@ begin
 	select 
 	IdEmpleado,NombreCompleto,Correo,Sueldo,
 	CONVERT(char(10),FechaContrato,103)[FechaContrato]
-	from Empleo
+	from Empleado
 	where IdEmpleado= @IdEmpleado
 end
 
@@ -97,3 +97,18 @@ as
 begin
 	 delete from Empleado where  @IdEmpleado = @IdEmpleado       
 end
+go 
+
+ALTER PROCEDURE sp_obtenerEmpleado
+(@IdEmpleado INT)
+AS 
+BEGIN
+    SELECT 
+        IdEmpleado,
+        NombreCompleto,
+        Correo,
+        Sueldo,
+        CONVERT(char(10), FechaContrato, 103) AS [FechaContrato]
+    FROM Empleado
+    WHERE IdEmpleado = @IdEmpleado
+END
