@@ -205,6 +205,7 @@ namespace MiWebAPI.Data
                 try
                 {
                     await con.OpenAsync();
+
                     respuesta = await cmd.ExecuteNonQueryAsync() > 0 ? true : false;
                 }
                 catch
